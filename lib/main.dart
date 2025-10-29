@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:rt_online/rt_online/model/home.dart';
+import 'package:rt_online/rt_online/model/login_screen.dart';
+import 'package:rt_online/rt_online/model/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +33,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const SplashScreenDay19(),
     );
   }
 }

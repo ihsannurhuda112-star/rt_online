@@ -3,6 +3,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rt_online/login_button/login_button.dart';
 import 'package:rt_online/preferences/preference_handler.dart';
 import 'package:rt_online/rt_online/database/db_helper.dart';
+import 'package:rt_online/rt_online/model/home.dart';
+import 'package:rt_online/rt_online/model/register_screen.dart';
 
 //Bahas Shared Preference
 class LoginScreenDay19 extends StatefulWidget {
@@ -139,7 +141,8 @@ class _LoginScreenDay19State extends State<LoginScreenDay19> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ListCitizenPage(
+                              builder: (context) => HomeWidget(
+                                email: data.email,
                                 //email: emailController.text,
                                 //name: usernameController.text,
                                 //age: "",
@@ -166,7 +169,7 @@ class _LoginScreenDay19State extends State<LoginScreenDay19> {
                                   },
                                 ),
                                 TextButton(
-                                  child: Text("Ga OK"),
+                                  child: Text("Dont have account? register"),
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
@@ -229,7 +232,7 @@ class _LoginScreenDay19State extends State<LoginScreenDay19> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            "assets/images/tas.jpg",
+                            "assets/images/goggle.png",
                             height: 16,
                             width: 16,
                           ),
@@ -287,7 +290,7 @@ class _LoginScreenDay19State extends State<LoginScreenDay19> {
       width: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/putihbunga.jpg"),
+          image: AssetImage("assets/images/donert.png"),
           fit: BoxFit.cover,
         ),
       ),

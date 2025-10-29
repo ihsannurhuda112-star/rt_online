@@ -76,6 +76,21 @@ class DbHelper {
     return results.map((e) => CitizenModel.fromMap(e)).toList();
   }
 
+  // ambil data warga via email
+  static Future<CitizenModel?> getCitizenByEmail(String email) async {
+    final dbs = await db();
+    final List<Map<String, dynamic>> resluts = await dbs.query(
+      tableCitizen,
+      where: 'email = ?',
+      whereArgs: [email],
+    );
+
+    if (resluts.isNotEmpty) {
+      return CitizenModel.fromMap(resluts.first);
+    }
+    return null;
+  }
+
   // update warga
   static Future<void> updateCitizen(CitizenModel citizen) async {
     final dbs = await db();
