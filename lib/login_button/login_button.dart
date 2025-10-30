@@ -26,7 +26,7 @@ class _LoginButtonWidgetState extends State<LoginButtonWidget> {
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: const Color.fromARGB(255, 0, 0, 0),
           ),
         ),
       ),

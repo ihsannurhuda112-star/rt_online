@@ -43,12 +43,13 @@ class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 242, 243, 242),
       appBar: AppBar(
         title: const Text(
           "Kontribusi saya",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.cyan,
+        backgroundColor: const Color.fromARGB(255, 227, 232, 233),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
@@ -72,12 +73,65 @@ class _HomeWidgetState extends State<HomeWidget> {
                     ),
                   ),
                   SizedBox(height: 20),
+                  const Text("Berikut kontribusi anda"),
+                  SizedBox(height: 16),
+
+                  Wrap(
+                    spacing: 16,
+                    runSpacing: 16,
+                    children: [
+                      _buildSummaryCard(
+                        color: const Color.fromARGB(255, 236, 240, 236),
+                        title: "Total Paid",
+                        value: "RP 200.000",
+                        icon: Icons.attach_money,
+                        gradientColors: [
+                          Colors.greenAccent.shade400,
+                          Colors.green.shade700,
+                        ],
+                      ),
+                      _buildSummaryCard(
+                        color: const Color.fromARGB(255, 231, 234, 236),
+                        title: "Paid",
+                        value: "3 Bulan",
+                        icon: Icons.check_circle_outline,
+                        gradientColors: [
+                          Colors.blueAccent.shade400,
+                          Colors.blue.shade700,
+                        ],
+                      ),
+                      _buildSummaryCard(
+                        color: const Color.fromARGB(255, 243, 241, 238),
+                        title: "Pending",
+                        value: "1 Bulan",
+                        icon: Icons.schedule,
+                        gradientColors: [
+                          Colors.orangeAccent.shade400,
+                          Colors.orange.shade700,
+                        ],
+                      ),
+                      _buildSummaryCard(
+                        color: const Color.fromARGB(255, 241, 241, 241),
+                        title: "Overdue",
+                        value: "1 Bulan",
+                        icon: Icons.warning_amber_rounded,
+                        gradientColors: [
+                          Colors.redAccent.shade400,
+                          Colors.red.shade700,
+                        ],
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: 20),
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       color: Colors.blueAccent,
                       borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: Colors.grey),
+                      border: Border.all(
+                        color: const Color.fromARGB(255, 37, 2, 2),
+                      ),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,10 +144,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                           ),
                         ),
                         const SizedBox(height: 10),
-                        _infoRow('Name', citizen!.username),
-                        _infoRow('Adress', citizen!.domisili),
-                        _infoRow('Email', citizen!.email),
-                        _infoRow('Age', citizen!.age.toString()),
+                        _infoRow(Icons.person, 'Name', citizen!.username),
+                        _infoRow(Icons.home, 'Adress', citizen!.domisili),
+                        _infoRow(Icons.email, 'Email', citizen!.email),
+                        _infoRow(Icons.cake, 'Age', citizen!.age.toString()),
                       ],
                     ),
                   ),
@@ -103,12 +157,80 @@ class _HomeWidgetState extends State<HomeWidget> {
     );
   }
 
-  Widget _infoRow(String label, String value) {
+  Widget _buildSummaryCard({
+    required Color color,
+    required String title,
+    required String value,
+    required IconData icon,
+    List<Color>? gradientColors,
+  }) {
+    return Container(
+      width: MediaQuery.of(context).size.width / 2 - 24,
+      constraints: const BoxConstraints(minHeight: 70),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: gradientColors ?? [color.withOpacity(0.7), color],
+        ),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 6,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black87,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  value,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: color,
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              padding: const EdgeInsets.all(6),
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.15),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Icon(icon, color: color, size: 20),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _infoRow(IconData icon, String label, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Icon(icon, color: Colors.white, size: 20),
+          const SizedBox(width: 8),
           Text("$label:", style: const TextStyle(fontWeight: FontWeight.bold)),
           Expanded(child: Text(value)),
         ],

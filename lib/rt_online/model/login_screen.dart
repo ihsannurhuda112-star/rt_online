@@ -290,7 +290,7 @@ class _LoginScreenDay19State extends State<LoginScreenDay19> {
       width: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/donert.png"),
+          image: AssetImage("assets/images/rthebat.png"),
           fit: BoxFit.cover,
         ),
       ),
@@ -309,6 +309,8 @@ class _LoginScreenDay19State extends State<LoginScreenDay19> {
       obscureText: isPassword ? isVisibility : false,
       decoration: InputDecoration(
         hintText: hintText,
+        filled: true,
+        fillColor: Colors.white,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(32),
           borderSide: BorderSide(
