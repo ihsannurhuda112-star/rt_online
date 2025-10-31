@@ -3,10 +3,12 @@ import 'package:rt_online/preferences/preference_handler.dart';
 import 'package:rt_online/rt_online/database/db_helper.dart';
 import 'package:rt_online/rt_online/model/citizen_model.dart';
 import 'package:rt_online/rt_online/model/login_screen.dart';
+import 'package:rt_online/rt_online/view/create_citizen.dart';
 
 class HomeWidget extends StatefulWidget {
   final String email;
-  const HomeWidget({super.key, required this.email});
+  final VoidCallback? onAddCitizenPressed;
+  const HomeWidget({super.key, required this.email, this.onAddCitizenPressed});
 
   @override
   State<HomeWidget> createState() => _HomeWidgetState();
@@ -43,9 +45,10 @@ class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 242, 243, 242),
+      backgroundColor: const Color.fromARGB(255, 219, 221, 248),
       appBar: AppBar(
-        title: const Text(
+        automaticallyImplyLeading: false,
+        title: Text(
           "Kontribusi saya",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
@@ -82,7 +85,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     children: [
                       _buildSummaryCard(
                         color: const Color.fromARGB(255, 236, 240, 236),
-                        title: "Total Paid",
+                        title: "Total Collected",
                         value: "RP 200.000",
                         icon: Icons.attach_money,
                         gradientColors: [
@@ -102,12 +105,12 @@ class _HomeWidgetState extends State<HomeWidget> {
                       ),
                       _buildSummaryCard(
                         color: const Color.fromARGB(255, 243, 241, 238),
-                        title: "Pending",
-                        value: "1 Bulan",
-                        icon: Icons.schedule,
+                        title: "Total Citizen",
+                        value: "4",
+                        icon: Icons.people,
                         gradientColors: [
-                          Colors.orangeAccent.shade400,
-                          Colors.orange.shade700,
+                          const Color.fromARGB(255, 126, 28, 255),
+                          const Color.fromARGB(255, 110, 18, 231),
                         ],
                       ),
                       _buildSummaryCard(
@@ -121,6 +124,57 @@ class _HomeWidgetState extends State<HomeWidget> {
                         ],
                       ),
                     ],
+                  ),
+                  SizedBox(height: 20),
+                  Card(
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusGeometry.circular(12),
+                    ),
+                    margin: const EdgeInsets.all(16.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Quick Actions",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 12),
+                        Row(
+                          children: [
+                            ElevatedButton.icon(
+                              onPressed:
+                                  widget.onAddCitizenPressed ??
+                                  () {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text('Aksi belum diatur'),
+                                      ),
+                                    );
+                                  },
+                              icon: const Icon(Icons.person_add_alt_1_rounded),
+                              label: const Text("Add Citizen"),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.deepPurpleAccent,
+                                foregroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadiusGeometry.circular(
+                                    10,
+                                  ),
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                  vertical: 12,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
 
                   SizedBox(height: 20),
