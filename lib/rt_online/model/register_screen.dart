@@ -237,6 +237,7 @@ class _RegisterScreenDay19State extends State<RegisterScreenDay19> {
         image: DecorationImage(
           image: AssetImage("assets/images/rtonline.png"),
           fit: BoxFit.cover,
+          opacity: 0.3,
         ),
       ),
     );
