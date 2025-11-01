@@ -7,6 +7,7 @@ class CitizenModel {
   int age;
   String password;
   String domisili;
+
   CitizenModel({
     this.id,
     required this.username,

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rt_online/rt_online/model/home.dart';
+import 'package:rt_online/rt_online/model/profile_screen.dart';
+import 'package:rt_online/rt_online/view/creat_payment.dart';
 import 'package:rt_online/rt_online/view/create_citizen.dart';
+import 'package:rt_online/rt_online/view/payment_list.dart';
 
 class ButtomNavigatorWidget extends StatefulWidget {
   final String email;
@@ -24,7 +27,9 @@ class _ButtomNavigatorWidgetState extends State<ButtomNavigatorWidget> {
           _onItemTapped(1);
         },
       ),
-      CreateCitizenWidget(),
+      PaymentListWidget(),
+      CreatPaymentWidget(),
+      ProfileSettingsWidget(email: widget.email),
     ];
   }
 
@@ -44,12 +49,14 @@ class _ButtomNavigatorWidgetState extends State<ButtomNavigatorWidget> {
         unselectedItemColor: Colors.white60,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.dashboard),
             label: 'Dashboard',
           ),
           BottomNavigationBarItem(icon: Icon(Icons.people), label: 'Citizens'),
+          BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),

@@ -15,16 +15,19 @@ class DbHelper {
         await db.execute(
           "CREATE TABLE $tableCitizen(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, email TEXT, password TEXT, age INTEGER, domisili TEXT)",
         );
+        await db.execute(
+          "CREATE TABLE $tablePayment(id INTEGER PRIMARY KEY AUTOINCREMENT, citizen TEXT, period TEXT, amount INTEGER, status TEXT)",
+        );
       },
 
-      onUpgrade: (db, oldVersion, newVersion) async {
-        if (oldVersion < newVersion) {
-          await db.execute(
-            "CREATE TABLE $tablePayment(id INTEGER PRIMARY KEY AUTOINCREMENT, citizen_id INTEGER, period TEXT, amount INTEGER, status TEXT, FOREIGN KEY (citizen_id) REFERENCES $tableCitizen(id))",
-          );
-        }
-      },
-      version: 2,
+      //onUpgrade: (db, oldVersion, newVersion) async {
+      //if (oldVersion < newVersion) {
+      //await db.execute(
+      //"CREATE TABLE $tablePayment(id INTEGER PRIMARY KEY AUTOINCREMENT, citizen TEXT, period TEXT, amount INTEGER, status TEXT)",
+      //);
+      //}
+      //},
+      version: 1,
     );
   }
 
@@ -131,12 +134,12 @@ class DbHelper {
   }
 
   //baca pembayaran dari id warga
-  static Future<List<PaymentModel>> getPaymentsByCitizen(int citizenid) async {
+  static Future<List<PaymentModel>> getPaymentsByCitizen(String citizen) async {
     final dbs = await db();
     final List<Map<String, dynamic>> results = await dbs.query(
       tablePayment,
-      where: 'citizen_id = ?',
-      whereArgs: [citizenid],
+      where: 'citizen = ?',
+      whereArgs: [citizen],
     );
     return results.map((e) => PaymentModel.fromMap(e)).toList();
   }

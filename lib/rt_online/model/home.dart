@@ -3,6 +3,7 @@ import 'package:rt_online/preferences/preference_handler.dart';
 import 'package:rt_online/rt_online/database/db_helper.dart';
 import 'package:rt_online/rt_online/model/citizen_model.dart';
 import 'package:rt_online/rt_online/model/login_screen.dart';
+import 'package:rt_online/rt_online/model/payment_model.dart';
 import 'package:rt_online/rt_online/view/create_citizen.dart';
 
 class HomeWidget extends StatefulWidget {
@@ -16,13 +17,19 @@ class HomeWidget extends StatefulWidget {
 
 class _HomeWidgetState extends State<HomeWidget> {
   CitizenModel? citizen;
+  int totalCitizens = 0;
+  int totalCollected = 0;
+  int totalPaid = 0;
+  int overdue = 0;
 
   @override
   void initState() {
     super.initState();
     _loadCitizen();
+    _loadSummaryData();
   }
 
+  // data dari email
   Future<void> _loadCitizen() async {
     final citizenData = await DbHelper.getCitizenByEmail(widget.email);
     if (citizenData != null) {
@@ -32,14 +39,27 @@ class _HomeWidgetState extends State<HomeWidget> {
     }
   }
 
-  Future<void> _logout() async {
-    await PreferenceHandler.saveLogin(false);
-    if (!mounted) return;
-    Navigator.pushAndRemoveUntil(
+  //ambil semua data summary from database
+  Future<void> _loadSummaryData() async {
+    final citizens = await DbHelper.getAllCitizen();
+    final payments = await DbHelper.getAllPayments();
+    setState(() {
+      totalCitizens = payments.length;
+      totalPaid = payments.where((e) => e.status == "paid").length;
+      overdue = payments.where((e) => e.status == "overdue").length;
+      totalCollected = payments
+          .where((p) => p.status == "paid")
+          .fold(0, (sum, p) => sum + p.amount);
+    });
+  }
+
+  //navigasi ke halam + warga dan refresh dashbord setelah kembali
+  Future<void> _navigateToAddCitizen() async {
+    await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const LoginScreenDay19()),
-      (Route<dynamic> route) => false,
+      MaterialPageRoute(builder: (context) => const CreateCitizenWidget()),
     );
+    _loadSummaryData();
   }
 
   @override
@@ -53,13 +73,6 @@ class _HomeWidgetState extends State<HomeWidget> {
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         backgroundColor: const Color.fromARGB(255, 227, 232, 233),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: _logout,
-            tooltip: 'Logout',
-          ),
-        ],
       ),
       body: citizen == null
           ? const Center(child: CircularProgressIndicator())
@@ -86,7 +99,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       _buildSummaryCard(
                         color: const Color.fromARGB(255, 236, 240, 236),
                         title: "Total Collected",
-                        value: "RP 200.000",
+                        value: "RP $totalCollected",
                         icon: Icons.attach_money,
                         gradientColors: [
                           Colors.greenAccent.shade400,
@@ -96,7 +109,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       _buildSummaryCard(
                         color: const Color.fromARGB(255, 231, 234, 236),
                         title: "Paid",
-                        value: "3 Bulan",
+                        value: "$totalPaid pembayaran",
                         icon: Icons.check_circle_outline,
                         gradientColors: [
                           Colors.blueAccent.shade400,
@@ -106,7 +119,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       _buildSummaryCard(
                         color: const Color.fromARGB(255, 243, 241, 238),
                         title: "Total Citizen",
-                        value: "4",
+                        value: "$totalCitizens warga",
                         icon: Icons.people,
                         gradientColors: [
                           const Color.fromARGB(255, 126, 28, 255),
@@ -116,7 +129,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       _buildSummaryCard(
                         color: const Color.fromARGB(255, 241, 241, 241),
                         title: "Overdue",
-                        value: "1 Bulan",
+                        value: "$overdue pembayaran",
                         icon: Icons.warning_amber_rounded,
                         gradientColors: [
                           Colors.redAccent.shade400,
