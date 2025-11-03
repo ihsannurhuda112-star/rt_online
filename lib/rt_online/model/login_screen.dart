@@ -291,7 +291,7 @@ class _LoginScreenDay19State extends State<LoginScreenDay19> {
       width: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/rthebat.png"),
+          image: AssetImage("assets/images/rtlog2.png"),
           fit: BoxFit.cover,
         ),
       ),

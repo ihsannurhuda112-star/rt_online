@@ -235,9 +235,8 @@ class _RegisterScreenDay19State extends State<RegisterScreenDay19> {
       width: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/rtonline.png"),
+          image: AssetImage("assets/images/newawal.png"),
           fit: BoxFit.cover,
-          opacity: 0.3,
         ),
       ),
     );
@@ -258,18 +257,21 @@ class _RegisterScreenDay19State extends State<RegisterScreenDay19> {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(32),
           borderSide: BorderSide(
-            color: Colors.black.withOpacity(0.2),
+            color: const Color.fromARGB(255, 255, 254, 254).withOpacity(0.2),
             width: 1.0,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(32),
-          borderSide: BorderSide(color: Colors.black, width: 1.0),
+          borderSide: BorderSide(
+            color: const Color.fromARGB(255, 253, 252, 252),
+            width: 1.0,
+          ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(32),
           borderSide: BorderSide(
-            color: Colors.black.withOpacity(0.2),
+            color: const Color.fromARGB(255, 250, 249, 249).withOpacity(0.2),
             width: 1.0,
           ),
         ),

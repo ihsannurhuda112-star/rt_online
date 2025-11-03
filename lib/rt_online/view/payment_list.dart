@@ -83,7 +83,7 @@ class _PaymentListWidgetState extends State<PaymentListWidget> {
                     controller: _searchController,
                     onChanged: (value) => _filterPayments(),
                     decoration: InputDecoration(
-                      hintText: 'Cari nama atau bulan...',
+                      hintText: 'Cari nama...',
                       prefixIcon: const Icon(Icons.search),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),

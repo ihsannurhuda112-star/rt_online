@@ -40,10 +40,11 @@ class _SplashScreenDay19State extends State<SplashScreenDay19> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [Center(child: Image.asset(AppImages.rton))],
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(color: Colors.white),
+        child: Image.asset(AppImages.awal2, fit: BoxFit.cover),
       ),
     );
   }
