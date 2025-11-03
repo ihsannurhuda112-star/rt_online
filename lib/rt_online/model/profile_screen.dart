@@ -132,7 +132,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
               const SizedBox(height: 10),
               ElevatedButton.icon(
                 onPressed: _updateCitizen,
-                icon: const Icon(Icons.save),
+                icon: const Icon(Icons.save, color: Colors.white),
                 label: const Text("Save Changes"),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.deepPurpleAccent,

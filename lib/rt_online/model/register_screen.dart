@@ -264,14 +264,14 @@ class _RegisterScreenDay19State extends State<RegisterScreenDay19> {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(32),
           borderSide: BorderSide(
-            color: const Color.fromARGB(255, 253, 252, 252),
+            color: const Color.fromARGB(255, 250, 250, 250),
             width: 1.0,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(32),
           borderSide: BorderSide(
-            color: const Color.fromARGB(255, 250, 249, 249).withOpacity(0.2),
+            color: const Color.fromARGB(255, 255, 254, 254).withOpacity(0.2),
             width: 1.0,
           ),
         ),
