@@ -28,7 +28,6 @@ class _ButtomNavigatorWidgetState extends State<ButtomNavigatorWidget> {
         },
       ),
       PaymentListWidget(),
-      CreatPaymentWidget(),
       ProfileSettingsWidget(email: widget.email),
     ];
   }
@@ -56,7 +55,6 @@ class _ButtomNavigatorWidgetState extends State<ButtomNavigatorWidget> {
             label: 'Dashboard',
           ),
           BottomNavigationBarItem(icon: Icon(Icons.people), label: 'Citizens'),
-          BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),

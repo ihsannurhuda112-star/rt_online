@@ -307,7 +307,7 @@ class _LoginScreenDay19State extends State<LoginScreenDay19> {
     return TextFormField(
       validator: validator,
       controller: controller,
-      obscureText: isPassword ? isVisibility : false,
+      obscureText: isPassword ? !isVisibility : false,
       decoration: InputDecoration(
         hintText: hintText,
         filled: true,

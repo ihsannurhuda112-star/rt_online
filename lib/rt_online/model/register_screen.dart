@@ -252,7 +252,7 @@ class _RegisterScreenDay19State extends State<RegisterScreenDay19> {
     return TextFormField(
       validator: validator,
       controller: controller,
-      obscureText: isPassword ? isVisibility : false,
+      obscureText: isPassword ? !isVisibility : false,
       decoration: InputDecoration(
         hintText: hintText,
         border: OutlineInputBorder(

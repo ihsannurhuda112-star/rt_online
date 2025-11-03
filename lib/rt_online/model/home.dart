@@ -69,7 +69,7 @@ class _HomeWidgetState extends State<HomeWidget> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
-          "Kontribusi saya",
+          "Profile Saya",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         backgroundColor: const Color.fromARGB(255, 227, 232, 233),
@@ -89,7 +89,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     ),
                   ),
                   SizedBox(height: 20),
-                  const Text("Berikut kontribusi anda"),
+                  const Text("Berikut kontribusi para warga"),
                   SizedBox(height: 16),
 
                   Wrap(
@@ -129,7 +129,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       _buildSummaryCard(
                         color: const Color.fromARGB(255, 241, 241, 241),
                         title: "Overdue",
-                        value: "$overdue pembayaran",
+                        value: "$overdue keterlambatan",
                         icon: Icons.warning_amber_rounded,
                         gradientColors: [
                           Colors.redAccent.shade400,

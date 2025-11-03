@@ -54,6 +54,7 @@ class _CreatPaymentWidgetState extends State<CreatPaymentWidget> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Payment successfully updated!')),
         );
+        Navigator.pop(context, true);
       }
     }
   }
@@ -62,7 +63,7 @@ class _CreatPaymentWidgetState extends State<CreatPaymentWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         title: Text('Add New Payment'),
         backgroundColor: Colors.deepPurple,
       ),

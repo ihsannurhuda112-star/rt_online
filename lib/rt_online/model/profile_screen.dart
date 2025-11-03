@@ -20,7 +20,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final addressController = TextEditingController();
-  final phoneController = TextEditingController();
+  final ageController = TextEditingController();
 
   @override
   void initState() {
@@ -36,7 +36,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
         nameController.text = data.username;
         emailController.text = data.email;
         addressController.text = data.domisili;
-        phoneController.text = "0811-xxxx-xxxx";
+        ageController.text = data.age.toString();
       });
     }
   }
@@ -49,7 +49,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
       username: nameController.text,
       email: emailController.text,
       password: citizen!.password, // jangan diubah
-      age: citizen!.age,
+      age: int.parse(ageController.text),
       domisili: addressController.text,
     );
 
@@ -99,7 +99,12 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
               const SizedBox(height: 16),
               _buildTextField("Full Name", nameController),
               _buildTextField("Email Address", emailController, readOnly: true),
-              _buildTextField("Phone Number", phoneController),
+              _buildTextField(
+                "Age",
+                ageController,
+                keyboardType: TextInputType.number,
+                isNumeric: true,
+              ),
               _buildTextField("Address", addressController),
               const SizedBox(height: 12),
               Container(
@@ -110,7 +115,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                   border: Border.all(color: Colors.purple.shade200),
                 ),
                 child: const Text(
-                  "Account Type: Leader\nContact the village leader to change your account type",
+                  "Version 1",
                   style: TextStyle(fontSize: 14, color: Colors.black87),
                 ),
               ),
@@ -145,6 +150,8 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
     String label,
     TextEditingController controller, {
     bool readOnly = false,
+    TextInputType keyboardType = TextInputType.text,
+    bool isNumeric = false,
   }) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
@@ -155,8 +162,13 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
           labelText: label,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         ),
-        validator: (val) =>
-            val == null || val.isEmpty ? "Field cannot be empty" : null,
+        validator: (val) {
+          if (val == null || val.isEmpty) return "Tidak boleh kosong";
+          if (isNumeric && int.tryParse(val) == null) {
+            return "Please masukan nomor yang valid";
+          }
+          return null;
+        },
       ),
     );
   }
