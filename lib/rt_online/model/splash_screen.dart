@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rt_online/buttomnavigator/buttom_navigator.dart';
 import 'package:rt_online/constant/app_images.dart';
 import 'package:rt_online/preferences/preference_handler.dart';
 import 'package:rt_online/rt_online/model/login_screen.dart';
@@ -14,27 +15,32 @@ class _SplashScreenDay19State extends State<SplashScreenDay19> {
   @override
   void initState() {
     super.initState();
-    isLoginFunction();
+    _checkLoginStatus();
   }
 
-  isLoginFunction() async {
-    Future.delayed(Duration(seconds: 3)).then((value) async {
-      var isLogin = await PreferenceHandler.getLogin();
-      print(isLogin);
-      if (isLogin != null && isLogin == true) {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => LoginScreenDay19()),
-          (route) => false,
-        );
-      } else {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => LoginScreenDay19()),
-          (route) => false,
-        );
-      }
-    });
+  Future<void> _checkLoginStatus() async {
+    await Future.delayed(const Duration(seconds: 3));
+
+    final isLogin = await PreferenceHandler.getLogin();
+    final email = await PreferenceHandler.getEmail();
+
+    print("Stauts login: $isLogin, Email: $email");
+
+    if (isLogin == true && email != null) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ButtomNavigatorWidget(email: email),
+        ),
+        (route) => false,
+      );
+    } else {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginScreenDay19()),
+        (route) => false,
+      );
+    }
   }
 
   @override

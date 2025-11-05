@@ -139,6 +139,8 @@ class _LoginScreenDay19State extends State<LoginScreenDay19> {
                           password: passwordController.text,
                         );
                         if (data != null) {
+                          await PreferenceHandler.saveLogin(true);
+                          await PreferenceHandler.saveEmail(data.email);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
