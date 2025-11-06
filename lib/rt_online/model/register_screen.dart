@@ -212,9 +212,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: Text(
                           "Sign In",
                           style: TextStyle(
-                            // color: AppColor.blueButton,
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
                         ),
                       ),
@@ -235,7 +235,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       width: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/newawal.png"),
+          image: AssetImage("assets/images/rtregister.png"),
           fit: BoxFit.cover,
         ),
       ),
@@ -257,21 +257,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(32),
           borderSide: BorderSide(
-            color: const Color.fromARGB(255, 255, 254, 254).withOpacity(0.2),
+            color: const Color.fromARGB(255, 15, 15, 15).withOpacity(0.2),
             width: 1.0,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(32),
           borderSide: BorderSide(
-            color: const Color.fromARGB(255, 250, 250, 250),
+            color: const Color.fromARGB(255, 20, 20, 20),
             width: 1.0,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(32),
           borderSide: BorderSide(
-            color: const Color.fromARGB(255, 255, 254, 254).withOpacity(0.2),
+            color: const Color.fromARGB(255, 14, 13, 13).withOpacity(0.2),
             width: 1.0,
           ),
         ),

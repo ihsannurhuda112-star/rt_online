@@ -4,4 +4,6 @@ class AppImages {
   static const rton = "$assetImage/rton.png";
   static const awal = "$assetImage/rtawal.png";
   static const awal2 = "$assetImage/newawal.png";
+  static const awal3 = "$assetImage/rtonungu.png";
+  static const rtungu = "$assetImage/rtonlineungu2.png";
 }

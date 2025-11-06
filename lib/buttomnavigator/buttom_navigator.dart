@@ -21,7 +21,7 @@ class _ButtomNavigatorWidgetState extends State<ButtomNavigatorWidget> {
     _pages = [
       HomeWidget(
         email: widget.email,
-        onAddCitizenPressed: () {
+        onNavigateToPaymentList: () {
           _onItemTapped(1);
         },
       ),
@@ -52,7 +52,10 @@ class _ButtomNavigatorWidgetState extends State<ButtomNavigatorWidget> {
             icon: Icon(Icons.dashboard),
             label: 'Dashboard',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.people), label: 'Citizens'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.payments_sharp),
+            label: 'List Payments',
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),

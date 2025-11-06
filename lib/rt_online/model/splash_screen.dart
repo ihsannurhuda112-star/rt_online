@@ -50,7 +50,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(color: Colors.white),
-        child: Image.asset(AppImages.awal2, fit: BoxFit.cover),
+        child: Image.asset(AppImages.rtungu, fit: BoxFit.cover),
       ),
     );
   }

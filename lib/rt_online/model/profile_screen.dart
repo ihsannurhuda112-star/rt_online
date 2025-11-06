@@ -123,7 +123,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                   border: Border.all(color: Colors.purple.shade200),
                 ),
                 child: const Text(
-                  "Version 1",
+                  "Version 1.0.0",
                   style: TextStyle(fontSize: 14, color: Colors.black87),
                 ),
               ),

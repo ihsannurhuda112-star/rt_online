@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:rt_online/rt_online/database/db_helper.dart';
 import 'package:rt_online/rt_online/model/citizen_model.dart';
-import 'package:rt_online/rt_online/view/create_citizen.dart';
+import 'package:rt_online/rt_online/view/payment_list.dart';
 
 class HomeWidget extends StatefulWidget {
   final String email;
-  final VoidCallback? onAddCitizenPressed;
-  const HomeWidget({super.key, required this.email, this.onAddCitizenPressed});
+  final VoidCallback? onNavigateToPaymentList;
+  const HomeWidget({
+    super.key,
+    required this.email,
+    this.onNavigateToPaymentList,
+  });
 
   @override
   State<HomeWidget> createState() => _HomeWidgetState();
@@ -38,7 +42,6 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   //ambil semua data summary from database
   Future<void> _loadSummaryData() async {
-    final citizens = await DbHelper.getAllCitizen();
     final payments = await DbHelper.getAllPayments();
     setState(() {
       totalCitizens = payments.length;
@@ -50,11 +53,11 @@ class _HomeWidgetState extends State<HomeWidget> {
     });
   }
 
-  //navigasi ke halam + warga dan refresh dashbord setelah kembali
-  Future<void> _navigateToAddCitizen() async {
+  //navigasi ke halaman + warga dan refresh dashbord setelah kembali
+  Future<void> _navigateToPaymentList() async {
     await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const CreateCitizenWidget()),
+      MaterialPageRoute(builder: (context) => const PaymentListWidget()),
     );
     _loadSummaryData();
   }
@@ -154,6 +157,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
+                            color: Colors.deepPurple,
                           ),
                         ),
                         SizedBox(height: 12),
@@ -161,7 +165,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                           children: [
                             ElevatedButton.icon(
                               onPressed:
-                                  widget.onAddCitizenPressed ??
+                                  widget.onNavigateToPaymentList ??
                                   () {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
@@ -169,8 +173,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       ),
                                     );
                                   },
-                              icon: const Icon(Icons.person_add_alt_1_rounded),
-                              label: const Text("Add Citizen"),
+                              icon: const Icon(Icons.payment_rounded),
+                              label: const Text("View Payment"),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.deepPurpleAccent,
                                 foregroundColor: Colors.white,

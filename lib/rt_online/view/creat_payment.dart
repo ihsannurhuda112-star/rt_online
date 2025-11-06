@@ -64,6 +64,7 @@ class _CreatPaymentWidgetState extends State<CreatPaymentWidget> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
+        iconTheme: const IconThemeData(color: Colors.white),
         title: Text(
           'Add New Payment',
           style: TextStyle(

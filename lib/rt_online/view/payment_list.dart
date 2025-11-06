@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:rt_online/rt_online/database/db_helper.dart';
 import 'package:rt_online/rt_online/model/payment_model.dart';
 import 'package:rt_online/rt_online/view/creat_payment.dart';
-import 'package:rt_online/rt_online/view/create_citizen.dart';
 
 class PaymentListWidget extends StatefulWidget {
   const PaymentListWidget({super.key});
@@ -278,13 +277,6 @@ class _PaymentListWidgetState extends State<PaymentListWidget> {
                                                   content: Text(
                                                     'Data berhasil dihapus',
                                                   ),
-                                                  backgroundColor:
-                                                      Color.fromARGB(
-                                                        255,
-                                                        19,
-                                                        18,
-                                                        18,
-                                                      ),
                                                 ),
                                               );
                                             }

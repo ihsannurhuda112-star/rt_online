@@ -120,8 +120,8 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                         "Forgot Password?",
                         style: TextStyle(
                           fontSize: 12,
-                          // color: AppColor.orange,
                           fontWeight: FontWeight.w500,
+                          color: Colors.black,
                         ),
                       ),
                     ),
@@ -269,9 +269,9 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                         child: Text(
                           "Sign Up",
                           style: TextStyle(
-                            // color: AppColor.blueButton,
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
                         ),
                       ),
@@ -292,7 +292,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
       width: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/rtlog2.png"),
+          image: AssetImage("assets/images/rtonungu.png"),
           fit: BoxFit.cover,
         ),
       ),
