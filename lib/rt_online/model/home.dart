@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rt_online/preferences/preference_handler.dart';
 import 'package:rt_online/rt_online/database/db_helper.dart';
 import 'package:rt_online/rt_online/model/citizen_model.dart';
-import 'package:rt_online/rt_online/model/login_screen.dart';
-import 'package:rt_online/rt_online/model/payment_model.dart';
 import 'package:rt_online/rt_online/view/create_citizen.dart';
 
 class HomeWidget extends StatefulWidget {
@@ -65,14 +62,18 @@ class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 219, 221, 248),
+      backgroundColor: Colors.purple.shade50,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
-          "Profile Saya",
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          "Dashboard",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
-        backgroundColor: const Color.fromARGB(255, 227, 232, 233),
+        backgroundColor: Colors.deepPurple,
       ),
       body: citizen == null
           ? const Center(child: CircularProgressIndicator())
@@ -194,7 +195,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent,
+                      color: Colors.deepPurpleAccent,
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
                         color: const Color.fromARGB(255, 37, 2, 2),
@@ -208,6 +209,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
                         ),
                         const SizedBox(height: 10),
@@ -262,7 +264,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                   style: const TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w500,
-                    color: Colors.black87,
+                    color: Colors.white,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -298,8 +300,16 @@ class _HomeWidgetState extends State<HomeWidget> {
         children: [
           Icon(icon, color: Colors.white, size: 20),
           const SizedBox(width: 8),
-          Text("$label:", style: const TextStyle(fontWeight: FontWeight.bold)),
-          Expanded(child: Text(value)),
+          Text(
+            "$label:",
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+          Expanded(
+            child: Text(value, style: TextStyle(color: Colors.white)),
+          ),
         ],
       ),
     );

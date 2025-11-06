@@ -4,18 +4,17 @@ import 'package:rt_online/buttomnavigator/buttom_navigator.dart';
 import 'package:rt_online/login_button/login_button.dart';
 import 'package:rt_online/preferences/preference_handler.dart';
 import 'package:rt_online/rt_online/database/db_helper.dart';
-import 'package:rt_online/rt_online/model/home.dart';
 import 'package:rt_online/rt_online/model/register_screen.dart';
 
 //Bahas Shared Preference
-class LoginScreenDay19 extends StatefulWidget {
-  const LoginScreenDay19({super.key});
+class LoginScreenWidget extends StatefulWidget {
+  const LoginScreenWidget({super.key});
   static const id = "/login_screen19";
   @override
-  State<LoginScreenDay19> createState() => _LoginScreenDay19State();
+  State<LoginScreenWidget> createState() => _LoginScreenWidgetState();
 }
 
-class _LoginScreenDay19State extends State<LoginScreenDay19> {
+class _LoginScreenWidgetState extends State<LoginScreenWidget> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController usernameController = TextEditingController();
@@ -194,57 +193,57 @@ class _LoginScreenDay19State extends State<LoginScreenDay19> {
                   //     );
                   //   },
                   // ),
-                  height(16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(right: 8),
-                          height: 1,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text(
-                        "Or Sign In With",
-                        // style: TextStyle(fontSize: 12, color: AppColor.gray88),
-                      ),
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(left: 8),
+                  // height(16),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     Expanded(
+                  //       child: Container(
+                  //         margin: EdgeInsets.only(right: 8),
+                  //         height: 1,
+                  //         color: Colors.white,
+                  //       ),
+                  //     ),
+                  //     Text(
+                  //       "Or Sign In With",
+                  //       // style: TextStyle(fontSize: 12, color: AppColor.gray88),
+                  //     ),
+                  //     Expanded(
+                  //       child: Container(
+                  //         margin: EdgeInsets.only(left: 8),
 
-                          height: 1,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
+                  //         height: 1,
+                  //         color: Colors.white,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
 
-                  height(16),
-                  SizedBox(
-                    height: 48,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                      ),
-                      onPressed: () {
-                        // Navigate to MeetLima screen menggunakan pushnamed
-                        Navigator.pushNamed(context, "/meet_2");
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            "assets/images/goggle.png",
-                            height: 16,
-                            width: 16,
-                          ),
-                          width(4),
-                          Text("Google"),
-                        ],
-                      ),
-                    ),
-                  ),
+                  // height(16),
+                  // SizedBox(
+                  //   height: 48,
+                  //   child: ElevatedButton(
+                  //     style: ElevatedButton.styleFrom(
+                  //       backgroundColor: Colors.white,
+                  //     ),
+                  //     onPressed: () {
+                  //       // Navigate to MeetLima screen menggunakan pushnamed
+                  //       Navigator.pushNamed(context, "/meet_2");
+                  //     },
+                  //     child: Row(
+                  //       mainAxisAlignment: MainAxisAlignment.center,
+                  //       children: [
+                  //         Image.asset(
+                  //           "assets/images/goggle.png",
+                  //           height: 16,
+                  //           width: 16,
+                  //         ),
+                  //         width(4),
+                  //         Text("Google"),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                   height(16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -258,7 +257,7 @@ class _LoginScreenDay19State extends State<LoginScreenDay19> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => RegisterScreenDay19(),
+                              builder: (context) => RegisterScreen(),
                             ),
                           );
                           // context.push(RegisterScreen());

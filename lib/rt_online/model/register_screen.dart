@@ -6,14 +6,14 @@ import 'package:rt_online/rt_online/model/citizen_model.dart';
 import 'package:rt_online/rt_online/model/login_screen.dart';
 
 //Bahas Shared Preference
-class RegisterScreenDay19 extends StatefulWidget {
-  const RegisterScreenDay19({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
   static const id = "/register";
   @override
-  State<RegisterScreenDay19> createState() => _RegisterScreenDay19State();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _RegisterScreenDay19State extends State<RegisterScreenDay19> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -156,7 +156,7 @@ class _RegisterScreenDay19State extends State<RegisterScreenDay19> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LoginScreenDay19(),
+                            builder: (context) => LoginScreenWidget(),
                           ),
                         );
                       } else {

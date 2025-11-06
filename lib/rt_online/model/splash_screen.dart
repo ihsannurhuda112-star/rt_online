@@ -4,14 +4,14 @@ import 'package:rt_online/constant/app_images.dart';
 import 'package:rt_online/preferences/preference_handler.dart';
 import 'package:rt_online/rt_online/model/login_screen.dart';
 
-class SplashScreenDay19 extends StatefulWidget {
-  const SplashScreenDay19({super.key});
+class SplashScreenWidget extends StatefulWidget {
+  const SplashScreenWidget({super.key});
 
   @override
-  State<SplashScreenDay19> createState() => _SplashScreenDay19State();
+  State<SplashScreenWidget> createState() => _SplashScreenWidgetState();
 }
 
-class _SplashScreenDay19State extends State<SplashScreenDay19> {
+class _SplashScreenWidgetState extends State<SplashScreenWidget> {
   @override
   void initState() {
     super.initState();
@@ -37,7 +37,7 @@ class _SplashScreenDay19State extends State<SplashScreenDay19> {
     } else {
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => const LoginScreenDay19()),
+        MaterialPageRoute(builder: (context) => const LoginScreenWidget()),
         (route) => false,
       );
     }

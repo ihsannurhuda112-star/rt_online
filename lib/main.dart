@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rt_online/rt_online/model/home.dart';
-import 'package:rt_online/rt_online/model/login_screen.dart';
 import 'package:rt_online/rt_online/model/splash_screen.dart';
 
 void main() {
@@ -33,7 +31,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const SplashScreenDay19(),
+      home: const SplashScreenWidget(),
     );
   }
 }

@@ -57,7 +57,14 @@ class _PaymentListWidgetState extends State<PaymentListWidget> {
       backgroundColor: Colors.purple.shade50,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text("Manage Contributions"),
+        title: const Text(
+          "Manage Contributions",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
         backgroundColor: Colors.deepPurple,
       ),
       body: Padding(
@@ -139,6 +146,7 @@ class _PaymentListWidgetState extends State<PaymentListWidget> {
                       itemBuilder: (context, index) {
                         final p = filteredPayments[index];
                         return Card(
+                          color: Colors.white,
                           margin: const EdgeInsets.only(bottom: 12),
                           elevation: 2,
                           shape: RoundedRectangleBorder(
@@ -239,11 +247,17 @@ class _PaymentListWidgetState extends State<PaymentListWidget> {
                                                     child: const Text('Batal'),
                                                   ),
                                                   ElevatedButton(
-                                                    style:
-                                                        ElevatedButton.styleFrom(
-                                                          backgroundColor:
-                                                              Colors.red,
-                                                        ),
+                                                    style: ElevatedButton.styleFrom(
+                                                      foregroundColor:
+                                                          const Color.fromARGB(
+                                                            255,
+                                                            250,
+                                                            250,
+                                                            250,
+                                                          ),
+                                                      backgroundColor:
+                                                          Colors.red,
+                                                    ),
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                           context,

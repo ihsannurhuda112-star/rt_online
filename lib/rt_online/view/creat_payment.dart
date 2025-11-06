@@ -64,7 +64,14 @@ class _CreatPaymentWidgetState extends State<CreatPaymentWidget> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
-        title: Text('Add New Payment'),
+        title: Text(
+          'Add New Payment',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
         backgroundColor: Colors.deepPurple,
       ),
       body: Padding(
@@ -129,6 +136,7 @@ class _CreatPaymentWidgetState extends State<CreatPaymentWidget> {
                 icon: const Icon(Icons.save),
                 label: const Text('Save Payment'),
                 style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
                   backgroundColor: Colors.deepPurple,
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   textStyle: const TextStyle(fontSize: 16),

@@ -65,7 +65,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
     if (!mounted) return;
     Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(builder: (_) => const LoginScreenDay19()),
+      MaterialPageRoute(builder: (_) => const LoginScreenWidget()),
       (route) => false,
     );
   }
@@ -77,10 +77,18 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
     }
 
     return Scaffold(
+      backgroundColor: Colors.purple.shade50,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text("Profile Settings"),
-        backgroundColor: Colors.deepPurpleAccent,
+        title: const Text(
+          "Profile Settings",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: Colors.deepPurple,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -125,6 +133,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                 icon: const Icon(Icons.logout, color: Colors.white),
                 label: const Text("Logout"),
                 style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
                   backgroundColor: Colors.redAccent,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                 ),
@@ -132,13 +141,11 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
               const SizedBox(height: 10),
               ElevatedButton.icon(
                 onPressed: _updateCitizen,
-                icon: const Icon(
-                  Icons.save,
-                  color: Color.fromARGB(255, 14, 13, 13),
-                ),
+                icon: const Icon(Icons.save, color: Colors.white),
                 label: const Text("Save Changes"),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 245, 244, 244),
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.deepPurple,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                 ),
               ),

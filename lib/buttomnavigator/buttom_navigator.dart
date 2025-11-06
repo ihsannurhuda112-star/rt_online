@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rt_online/rt_online/model/home.dart';
 import 'package:rt_online/rt_online/model/profile_screen.dart';
-import 'package:rt_online/rt_online/view/creat_payment.dart';
-import 'package:rt_online/rt_online/view/create_citizen.dart';
 import 'package:rt_online/rt_online/view/payment_list.dart';
 
 class ButtomNavigatorWidget extends StatefulWidget {
