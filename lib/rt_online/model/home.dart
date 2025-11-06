@@ -176,7 +176,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                               icon: const Icon(Icons.payment_rounded),
                               label: const Text("View Payment"),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.deepPurpleAccent,
+                                backgroundColor: Colors.deepPurple,
                                 foregroundColor: Colors.white,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadiusGeometry.circular(
@@ -199,7 +199,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: Colors.deepPurpleAccent,
+                      color: Colors.deepPurple,
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
                         color: const Color.fromARGB(255, 37, 2, 2),
