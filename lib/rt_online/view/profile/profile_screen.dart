@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rt_online/preferences/preference_handler.dart';
 import 'package:rt_online/rt_online/database/db_helper.dart';
 import 'package:rt_online/rt_online/model/citizen_model.dart';
-import 'package:rt_online/rt_online/model/login_screen.dart';
+import 'package:rt_online/rt_online/view/auth/login_screen.dart';
 
 class ProfileSettingsWidget extends StatefulWidget {
   final String email; // Email user yang sedang login

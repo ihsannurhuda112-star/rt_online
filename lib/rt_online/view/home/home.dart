@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rt_online/rt_online/database/db_helper.dart';
 import 'package:rt_online/rt_online/model/citizen_model.dart';
-import 'package:rt_online/rt_online/view/payment_list.dart';
+import 'package:rt_online/rt_online/view/payments/payment_list.dart';
 
 class HomeWidget extends StatefulWidget {
   final String email;

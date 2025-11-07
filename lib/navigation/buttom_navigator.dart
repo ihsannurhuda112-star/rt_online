@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rt_online/rt_online/model/home.dart';
-import 'package:rt_online/rt_online/model/profile_screen.dart';
-import 'package:rt_online/rt_online/view/payment_list.dart';
+import 'package:rt_online/rt_online/view/home/home.dart';
+import 'package:rt_online/rt_online/view/profile/profile_screen.dart';
+import 'package:rt_online/rt_online/view/payments/payment_list.dart';
 
 class ButtomNavigatorWidget extends StatefulWidget {
   final String email;

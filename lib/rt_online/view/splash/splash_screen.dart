@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rt_online/buttomnavigator/buttom_navigator.dart';
+import 'package:rt_online/navigation/buttom_navigator.dart';
 import 'package:rt_online/constant/app_images.dart';
 import 'package:rt_online/preferences/preference_handler.dart';
-import 'package:rt_online/rt_online/model/login_screen.dart';
+import 'package:rt_online/rt_online/view/auth/login_screen.dart';
 
 class SplashScreenWidget extends StatefulWidget {
   const SplashScreenWidget({super.key});

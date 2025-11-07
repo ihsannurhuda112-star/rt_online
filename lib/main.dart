@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rt_online/rt_online/model/splash_screen.dart';
+import 'package:rt_online/rt_online/view/splash/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());

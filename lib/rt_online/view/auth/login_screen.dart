@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:rt_online/buttomnavigator/buttom_navigator.dart';
-import 'package:rt_online/login_button/login_button.dart';
+import 'package:rt_online/navigation/buttom_navigator.dart';
+import 'package:rt_online/widgets/login_button.dart';
 import 'package:rt_online/preferences/preference_handler.dart';
 import 'package:rt_online/rt_online/database/db_helper.dart';
-import 'package:rt_online/rt_online/model/register_screen.dart';
+import 'package:rt_online/rt_online/view/auth/register_screen.dart';
 
 //Bahas Shared Preference
 class LoginScreenWidget extends StatefulWidget {

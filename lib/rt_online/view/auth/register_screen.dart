@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:rt_online/login_button/login_button.dart';
+import 'package:rt_online/widgets/login_button.dart';
 import 'package:rt_online/rt_online/database/db_helper.dart';
 import 'package:rt_online/rt_online/model/citizen_model.dart';
-import 'package:rt_online/rt_online/model/login_screen.dart';
+import 'package:rt_online/rt_online/view/auth/login_screen.dart';
 
 //Bahas Shared Preference
 class RegisterScreen extends StatefulWidget {
