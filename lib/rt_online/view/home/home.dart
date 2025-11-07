@@ -209,7 +209,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
-                          'Informasi Warga',
+                          'Informasi Kepala RT',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
