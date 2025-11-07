@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rt_online/rt_online/database/db_helper.dart';
 import 'package:rt_online/rt_online/model/payment_model.dart';
-import 'package:rt_online/rt_online/view/payments/creat_payment.dart';
+import 'package:rt_online/rt_online/view/payments/create_payment.dart';
 
 class PaymentListWidget extends StatefulWidget {
   const PaymentListWidget({super.key});
@@ -77,7 +77,7 @@ class _PaymentListWidgetState extends State<PaymentListWidget> {
                   final result = await Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => const CreatPaymentWidget(),
+                      builder: (_) => const CreatePaymentWidget(),
                     ),
                   );
                   if (result == true) _loadPayments();
@@ -213,7 +213,7 @@ class _PaymentListWidgetState extends State<PaymentListWidget> {
                                               context,
                                               MaterialPageRoute(
                                                 builder: (_) =>
-                                                    CreatPaymentWidget(
+                                                    CreatePaymentWidget(
                                                       payment: p,
                                                     ),
                                               ),

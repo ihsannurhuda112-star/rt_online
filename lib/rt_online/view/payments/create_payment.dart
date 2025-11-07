@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:rt_online/rt_online/database/db_helper.dart';
 import 'package:rt_online/rt_online/model/payment_model.dart';
 
-class CreatPaymentWidget extends StatefulWidget {
+class CreatePaymentWidget extends StatefulWidget {
   final PaymentModel? payment;
 
-  const CreatPaymentWidget({super.key, this.payment});
+  const CreatePaymentWidget({super.key, this.payment});
 
   @override
-  State<CreatPaymentWidget> createState() => _CreatPaymentWidgetState();
+  State<CreatePaymentWidget> createState() => _CreatePaymentWidgetState();
 }
 
-class _CreatPaymentWidgetState extends State<CreatPaymentWidget> {
+class _CreatePaymentWidgetState extends State<CreatePaymentWidget> {
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController _citizenController = TextEditingController();
