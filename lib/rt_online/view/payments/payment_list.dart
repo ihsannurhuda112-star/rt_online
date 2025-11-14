@@ -57,7 +57,7 @@ class _PaymentListWidgetState extends State<PaymentListWidget> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text(
-          "Manage Contributions",
+          "Kelola Kontribusi",
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -83,7 +83,7 @@ class _PaymentListWidgetState extends State<PaymentListWidget> {
                   if (result == true) _loadPayments();
                 },
                 icon: const Icon(Icons.add),
-                label: const Text("Add Payment"),
+                label: const Text("Tambahkan Pembayaran"),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
                   foregroundColor: Colors.deepPurple,
@@ -102,7 +102,7 @@ class _PaymentListWidgetState extends State<PaymentListWidget> {
               controller: _searchController,
               onChanged: (value) => _filterPayments(),
               decoration: InputDecoration(
-                hintText: 'Cari nama atau periode...',
+                hintText: 'Cari nama...',
                 prefixIcon: const Icon(Icons.search),
                 filled: true,
                 fillColor: Colors.white,
@@ -120,11 +120,11 @@ class _PaymentListWidgetState extends State<PaymentListWidget> {
                 items: const [
                   DropdownMenuItem(
                     value: 'All Status',
-                    child: Text('All Status'),
+                    child: Text('Semua Status'),
                   ),
-                  DropdownMenuItem(value: 'paid', child: Text('Paid')),
-                  DropdownMenuItem(value: 'pending', child: Text('Pending')),
-                  DropdownMenuItem(value: 'overdue', child: Text('Overdue')),
+                  DropdownMenuItem(value: 'paid', child: Text('Dibayar')),
+                  DropdownMenuItem(value: 'pending', child: Text('Tertunda')),
+                  DropdownMenuItem(value: 'overdue', child: Text('Terlambat')),
                 ],
                 onChanged: (value) {
                   setState(() {
@@ -139,7 +139,7 @@ class _PaymentListWidgetState extends State<PaymentListWidget> {
 
             Expanded(
               child: filteredPayments.isEmpty
-                  ? const Center(child: Text("No payments found"))
+                  ? const Center(child: Text("Pembayaran tidak ditemukan"))
                   : ListView.builder(
                       itemCount: filteredPayments.length,
                       itemBuilder: (context, index) {
@@ -167,7 +167,7 @@ class _PaymentListWidgetState extends State<PaymentListWidget> {
                                       ),
                                     ),
                                     const SizedBox(height: 4),
-                                    Text("Period: ${p.period}"),
+                                    Text("Periode: ${p.period}"),
                                     Text("Jumlah: Rp ${p.amount}"),
                                   ],
                                 ),

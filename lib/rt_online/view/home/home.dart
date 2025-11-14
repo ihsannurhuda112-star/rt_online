@@ -93,7 +93,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     ),
                   ),
                   SizedBox(height: 20),
-                  const Text("Berikut kontribusi para warga"),
+                  const Text("Berikut ini adalah kontribusi dari warga"),
                   SizedBox(height: 16),
 
                   Wrap(
@@ -102,7 +102,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     children: [
                       _buildSummaryCard(
                         color: const Color.fromARGB(255, 236, 240, 236),
-                        title: "Total Collected",
+                        title: "Total Pembayaran",
                         value: "RP $totalCollected",
                         icon: Icons.attach_money,
                         gradientColors: [
@@ -112,7 +112,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       ),
                       _buildSummaryCard(
                         color: const Color.fromARGB(255, 231, 234, 236),
-                        title: "Paid",
+                        title: "Total Pembayaran",
                         value: "$totalPaid pembayaran",
                         icon: Icons.check_circle_outline,
                         gradientColors: [
@@ -122,7 +122,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       ),
                       _buildSummaryCard(
                         color: const Color.fromARGB(255, 243, 241, 238),
-                        title: "Total Citizen",
+                        title: "Total Warga",
                         value: "$totalCitizens warga",
                         icon: Icons.people,
                         gradientColors: [
@@ -132,8 +132,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                       ),
                       _buildSummaryCard(
                         color: const Color.fromARGB(255, 241, 241, 241),
-                        title: "Overdue",
-                        value: "$overdue keterlambatan",
+                        title: "Keterlambatan",
+                        value: "$overdue terlambat",
                         icon: Icons.warning_amber_rounded,
                         gradientColors: [
                           Colors.redAccent.shade400,
@@ -153,7 +153,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          "Quick Actions",
+                          "Aksi Cepat",
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -174,7 +174,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     );
                                   },
                               icon: const Icon(Icons.payment_rounded),
-                              label: const Text("View Payment"),
+                              label: const Text("Lihat Pembayaran"),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.deepPurple,
                                 foregroundColor: Colors.white,
@@ -217,10 +217,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                           ),
                         ),
                         const SizedBox(height: 10),
-                        _infoRow(Icons.person, 'Name', citizen!.username),
-                        _infoRow(Icons.home, 'Adress', citizen!.domisili),
+                        _infoRow(Icons.person, 'Nama', citizen!.username),
+                        _infoRow(Icons.home, 'Alamat Rumah', citizen!.domisili),
                         _infoRow(Icons.email, 'Email', citizen!.email),
-                        _infoRow(Icons.cake, 'Age', citizen!.age.toString()),
+                        _infoRow(Icons.cake, 'Umur', citizen!.age.toString()),
                       ],
                     ),
                   ),

@@ -47,12 +47,12 @@ class _CreatePaymentWidgetState extends State<CreatePaymentWidget> {
         Navigator.pop(context, true);
 
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Payment successfully added!')),
+          const SnackBar(content: Text('Pembayaran berhasil ditambahkan!')),
         );
       } else {
         await DbHelper.updatePayment(payment);
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Payment successfully updated!')),
+          const SnackBar(content: Text('Pembayaran berhasil diperbarui!')),
         );
         Navigator.pop(context, true);
       }
@@ -66,7 +66,7 @@ class _CreatePaymentWidgetState extends State<CreatePaymentWidget> {
         automaticallyImplyLeading: true,
         iconTheme: const IconThemeData(color: Colors.white),
         title: Text(
-          'Add New Payment',
+          'Tambahkan Pembayaran Baru',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -84,7 +84,7 @@ class _CreatePaymentWidgetState extends State<CreatePaymentWidget> {
               TextFormField(
                 controller: _citizenController,
                 decoration: const InputDecoration(
-                  labelText: 'Citizen Name',
+                  labelText: 'Nama Warga',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) => value == null || value.isEmpty
@@ -95,7 +95,7 @@ class _CreatePaymentWidgetState extends State<CreatePaymentWidget> {
               TextFormField(
                 controller: _periodController,
                 decoration: const InputDecoration(
-                  labelText: 'Period (e.g. October 2025)',
+                  labelText: 'Periode (Contoh Oktober 2025)',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) => value == null || value.isEmpty
@@ -106,7 +106,7 @@ class _CreatePaymentWidgetState extends State<CreatePaymentWidget> {
               TextFormField(
                 controller: _amountController,
                 decoration: const InputDecoration(
-                  labelText: 'Amount (Rp)',
+                  labelText: 'Jumlah (Rp)',
                   border: OutlineInputBorder(),
                 ),
                 keyboardType: TextInputType.number,
@@ -117,9 +117,9 @@ class _CreatePaymentWidgetState extends State<CreatePaymentWidget> {
               DropdownButtonFormField<String>(
                 value: _status,
                 items: const [
-                  DropdownMenuItem(value: 'paid', child: Text('Paid')),
-                  DropdownMenuItem(value: 'pending', child: Text('Pending')),
-                  DropdownMenuItem(value: 'overdue', child: Text('Overdue')),
+                  DropdownMenuItem(value: 'paid', child: Text('Dibayar')),
+                  DropdownMenuItem(value: 'pending', child: Text('Tertunda')),
+                  DropdownMenuItem(value: 'overdue', child: Text('Terlambat')),
                 ],
                 onChanged: (value) {
                   setState(() {
@@ -135,7 +135,7 @@ class _CreatePaymentWidgetState extends State<CreatePaymentWidget> {
               ElevatedButton.icon(
                 onPressed: _savePayment,
                 icon: const Icon(Icons.save),
-                label: const Text('Save Payment'),
+                label: const Text('Simpan Pembayaran'),
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.deepPurple,

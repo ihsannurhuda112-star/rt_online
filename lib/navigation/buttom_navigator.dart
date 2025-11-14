@@ -54,7 +54,7 @@ class _ButtomNavigatorWidgetState extends State<ButtomNavigatorWidget> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.payments_sharp),
-            label: 'List Payments',
+            label: 'Daftar Pembayaran',
           ),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],

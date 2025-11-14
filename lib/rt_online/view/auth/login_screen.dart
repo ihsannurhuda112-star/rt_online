@@ -58,19 +58,19 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                 // crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "Welcome Back",
+                    "Selamat Datang",
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   height(12),
                   Text(
-                    "Login to access your account",
+                    "Masuk untuk mengakses akun Anda",
                     // style: TextStyle(fontSize: 14, color: AppColor.gray88),
                   ),
                   height(24),
                   buildTitle("Email Address"),
                   height(12),
                   buildTextField(
-                    hintText: "Enter your email",
+                    hintText: "Masukan alamat email",
                     controller: emailController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -90,7 +90,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                   buildTitle("Password"),
                   height(12),
                   buildTextField(
-                    hintText: "Enter your password",
+                    hintText: "Masukkan kata sandi Anda",
                     isPassword: true,
                     controller: passwordController,
                     validator: (value) {
@@ -117,7 +117,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                         // );
                       },
                       child: Text(
-                        "Forgot Password?",
+                        "Lupa Kata Sandi?",
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
@@ -128,7 +128,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                   ),
                   height(24),
                   LoginButtonWidget(
-                    text: "Login",
+                    text: "Masuk",
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
                         print(emailController.text);
@@ -161,8 +161,8 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              title: Text("Validation Error"),
-                              content: Text("Please fill all fields"),
+                              title: Text("Kesalahan Validasi"),
+                              content: Text("Silakan isi semua kolom"),
                               actions: [
                                 TextButton(
                                   child: Text("OK"),
@@ -171,7 +171,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                   },
                                 ),
                                 TextButton(
-                                  child: Text("Dont have account? register"),
+                                  child: Text("Belum punya akun? Daftar"),
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
@@ -249,7 +249,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Don't have an account?",
+                        "Belum punya akun?",
                         // style: TextStyle(fontSize: 12, color: AppColor.gray88),
                       ),
                       TextButton(
@@ -267,7 +267,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                           // );
                         },
                         child: Text(
-                          "Sign Up",
+                          "Daftar",
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
@@ -292,7 +292,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
       width: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/rtonungu.png"),
+          image: AssetImage("assets/images/newlg2.png"),
           fit: BoxFit.cover,
         ),
       ),

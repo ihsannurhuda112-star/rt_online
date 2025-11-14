@@ -6,4 +6,5 @@ class AppImages {
   static const awal2 = "$assetImage/newawal.png";
   static const awal3 = "$assetImage/rtonungu.png";
   static const rtungu = "$assetImage/rtonlineungu2.png";
+  static const rtnew1 = "$assetImage/newlg1.png";
 }

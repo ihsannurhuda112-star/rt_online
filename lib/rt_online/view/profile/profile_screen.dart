@@ -1,4 +1,8 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:rt_online/preferences/preference_handler.dart';
 import 'package:rt_online/rt_online/database/db_helper.dart';
 import 'package:rt_online/rt_online/model/citizen_model.dart';
@@ -22,12 +26,17 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
   final addressController = TextEditingController();
   final ageController = TextEditingController();
 
+  // Gambar profil
+  File? _profileImage;
+
   @override
   void initState() {
     super.initState();
     _loadCitizen();
+    _loadProfileImage(); // 🔥 Load foto profil tersimpan
   }
 
+  // 🔹 Ambil data warga dari database
   Future<void> _loadCitizen() async {
     final data = await DbHelper.getCitizenByEmail(widget.email);
     if (data != null) {
@@ -41,6 +50,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
     }
   }
 
+  // 🔹 Simpan perubahan profil
   Future<void> _updateCitizen() async {
     if (!_formKey.currentState!.validate()) return;
 
@@ -48,7 +58,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
       id: citizen!.id,
       username: nameController.text,
       email: emailController.text,
-      password: citizen!.password, // jangan diubah
+      password: citizen!.password,
       age: int.parse(ageController.text),
       domisili: addressController.text,
     );
@@ -56,10 +66,11 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
     await DbHelper.updateCitizen(updated);
 
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Profile updated successfully!')),
+      const SnackBar(content: Text('Profil berhasil diperbarui!')),
     );
   }
 
+  // 🔹 Logout
   Future<void> _logout() async {
     await PreferenceHandler.saveLogin(false);
     if (!mounted) return;
@@ -68,6 +79,44 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
       MaterialPageRoute(builder: (_) => const LoginScreenWidget()),
       (route) => false,
     );
+  }
+
+  // 🔹 PILIH GAMBAR dari galeri
+  Future<void> _pickImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      final savedPath = await _saveImageLocally(File(pickedFile.path));
+      await _saveProfileImagePath(savedPath);
+      setState(() {
+        _profileImage = File(savedPath);
+      });
+    }
+  }
+
+  // 🔹 Simpan file gambar ke folder aplikasi
+  Future<String> _saveImageLocally(File image) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final name = DateTime.now().millisecondsSinceEpoch.toString();
+    final savedImage = await image.copy('${directory.path}/$name.png');
+    return savedImage.path;
+  }
+
+  // 🔹 Simpan path gambar ke SharedPreferences
+  Future<void> _saveProfileImagePath(String path) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('profile_image', path);
+  }
+
+  // 🔹 Load gambar profil yang tersimpan
+  Future<void> _loadProfileImage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final path = prefs.getString('profile_image');
+    if (path != null) {
+      setState(() {
+        _profileImage = File(path);
+      });
+    }
   }
 
   @override
@@ -81,7 +130,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text(
-          "Profile Settings",
+          "Pengaturan Profil",
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -96,24 +145,50 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
           key: _formKey,
           child: ListView(
             children: [
-              const CircleAvatar(
-                radius: 40,
-                backgroundColor: Colors.purple,
-                child: Text(
-                  "VL",
-                  style: TextStyle(fontSize: 20, color: Colors.white),
+              const SizedBox(height: 16),
+              Center(
+                child: Stack(
+                  alignment: Alignment.bottomRight,
+                  children: [
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundImage: _profileImage != null
+                          ? FileImage(_profileImage!)
+                          : const AssetImage('assets/default_profile.png')
+                                as ImageProvider,
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      right: 4,
+                      child: InkWell(
+                        onTap: _pickImage,
+                        child: Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: const BoxDecoration(
+                            color: Colors.deepPurple,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.camera_alt,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(height: 16),
-              _buildTextField("Full Name", nameController),
-              _buildTextField("Email Address", emailController, readOnly: true),
+              _buildTextField("Nama Lengkap", nameController),
+              _buildTextField("Alamat Email", emailController, readOnly: true),
               _buildTextField(
-                "Age",
+                "Umur",
                 ageController,
                 keyboardType: TextInputType.number,
                 isNumeric: true,
               ),
-              _buildTextField("Address", addressController),
+              _buildTextField("Alamat Rumah", addressController),
               const SizedBox(height: 12),
               Container(
                 padding: const EdgeInsets.all(12),
@@ -131,7 +206,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
               ElevatedButton.icon(
                 onPressed: _logout,
                 icon: const Icon(Icons.logout, color: Colors.white),
-                label: const Text("Logout"),
+                label: const Text("Keluar"),
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.redAccent,
@@ -142,7 +217,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
               ElevatedButton.icon(
                 onPressed: _updateCitizen,
                 icon: const Icon(Icons.save, color: Colors.white),
-                label: const Text("Save Changes"),
+                label: const Text("Simpan Perubahan"),
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.deepPurple,
@@ -156,6 +231,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
     );
   }
 
+  // 🔹 Widget text field dengan validator
   Widget _buildTextField(
     String label,
     TextEditingController controller, {
@@ -175,7 +251,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
         validator: (val) {
           if (val == null || val.isEmpty) return "Tidak boleh kosong";
           if (isNumeric && int.tryParse(val) == null) {
-            return "Please masukan nomor yang valid";
+            return "Masukkan angka yang valid";
           }
           return null;
         },

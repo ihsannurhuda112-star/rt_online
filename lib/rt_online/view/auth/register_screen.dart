@@ -46,19 +46,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 // crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "Welcome",
+                    "Selamat Datang",
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   height(12),
                   Text(
-                    "Register to access your account",
+                    "Daftar untuk mengakses akun Anda",
                     // style: TextStyle(fontSize: 14, color: AppColor.gray88),
                   ),
                   height(24),
                   buildTitle("Username"),
                   height(12),
                   buildTextField(
-                    hintText: "Enter your username",
+                    hintText: "Masukkan nama pengguna Anda",
                     controller: usernameController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -72,7 +72,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   buildTitle("Email Address"),
                   height(12),
                   buildTextField(
-                    hintText: "Enter your email",
+                    hintText: "Masukkan email Anda",
                     controller: emailController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -92,7 +92,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   buildTitle("Password"),
                   height(12),
                   buildTextField(
-                    hintText: "Enter your password",
+                    hintText: "Masukkan kata sandi Anda",
                     isPassword: true,
                     controller: passwordController,
                     validator: (value) {
@@ -108,7 +108,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   buildTitle("Domisili"),
                   height(12),
                   buildTextField(
-                    hintText: "Enter your domisili",
+                    hintText: "Masukkan alamat Anda",
                     controller: domController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -120,13 +120,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   height(16),
                   buildTitle("Phone"),
                   height(12),
-                  buildTextField(hintText: "Enter your phone number"),
+                  buildTextField(hintText: "Masukkan nomor telepon Anda"),
 
                   height(16),
                   buildTitle("age"),
                   height(12),
                   buildTextField(
-                    hintText: "Enter your age",
+                    hintText: "Masukkan usia Anda",
                     controller: ageController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -138,7 +138,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                   height(24),
                   LoginButtonWidget(
-                    text: "Register",
+                    text: "Daftar",
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         print(emailController.text);
@@ -150,7 +150,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           domisili: domController.text,
                         );
                         DbHelper.registerUser(data);
-                        Fluttertoast.showToast(msg: "Register Berhasil");
+                        Fluttertoast.showToast(msg: "Daftar Berhasil");
                         // PreferenceHandler.saveLogin(true);
                         Navigator.pop(context);
                         Navigator.push(
@@ -202,7 +202,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Have an account?",
+                        "Sudah punya akun?",
                         // style: TextStyle(fontSize: 12, color: AppColor.gray88),
                       ),
                       TextButton(
@@ -210,7 +210,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           Navigator.of(context).pop();
                         },
                         child: Text(
-                          "Sign In",
+                          "Masuk",
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
@@ -237,6 +237,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         image: DecorationImage(
           image: AssetImage("assets/images/rtregister.png"),
           fit: BoxFit.cover,
+          opacity: 3,
         ),
       ),
     );
