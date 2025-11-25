@@ -3,6 +3,7 @@ import 'package:rt_online/navigation/buttom_navigator.dart';
 import 'package:rt_online/constant/app_images.dart';
 import 'package:rt_online/preferences/preference_handler.dart';
 import 'package:rt_online/rt_online/view/auth/login_screen.dart';
+import 'package:rt_online/rt_online/view/auth/login_screen_firebase.dart';
 
 class SplashScreenWidget extends StatefulWidget {
   const SplashScreenWidget({super.key});
@@ -37,7 +38,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
     } else {
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => const LoginScreenWidget()),
+        MaterialPageRoute(builder: (context) => const LoginScreenFirebase()),
         (route) => false,
       );
     }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:rt_online/rt_online/view/home/home.dart';
+import 'package:rt_online/rt_online/view/home/home_firebase.dart';
+import 'package:rt_online/rt_online/view/payments/payment_list_firebase.dart';
 import 'package:rt_online/rt_online/view/profile/profile_screen.dart';
 import 'package:rt_online/rt_online/view/payments/payment_list.dart';
+import 'package:rt_online/rt_online/view/profile/profile_screen_firebase.dart';
 
 class ButtomNavigatorWidget extends StatefulWidget {
   final String email;
@@ -19,14 +22,14 @@ class _ButtomNavigatorWidgetState extends State<ButtomNavigatorWidget> {
   void initState() {
     super.initState();
     _pages = [
-      HomeWidget(
+      HomeFirebase(
         email: widget.email,
         onNavigateToPaymentList: () {
           _onItemTapped(1);
         },
       ),
-      PaymentListWidget(),
-      ProfileSettingsWidget(email: widget.email),
+      PaymentListFirebaseWidget(),
+      ProfileScreenFirebase(email: widget.email),
     ];
   }
 
