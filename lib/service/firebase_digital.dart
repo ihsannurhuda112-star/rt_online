@@ -10,7 +10,7 @@ class FirebaseDigital {
 
   // ===================== CITIZEN ===================== //
 
-  /// 🔥 DIPAKAI SAAT REGISTER:
+  ///  DIPAKAI SAAT REGISTER:
   /// Simpan profil user ke Firestore.
   /// `uid` di CitizenModelFirebase WAJIB sama dengan FirebaseAuth.currentUser.uid
   static Future<void> createCitizen(CitizenModelFirebase citizen) async {
@@ -51,7 +51,7 @@ class FirebaseDigital {
     return CitizenModelFirebase.fromMap(data);
   }
 
-  /// 🔍 (Masih boleh) Ambil warga berdasarkan email
+  /// 🔍  Ambil warga berdasarkan email
   static Future<CitizenModelFirebase?> getCitizenByEmail(String email) async {
     final query = await _db
         .collection(tableCitizen)
@@ -73,7 +73,6 @@ class FirebaseDigital {
     final uid = citizen.uid;
 
     final data = Map<String, dynamic>.from(citizen.toMap());
-    // kalau kamu tidak mau field 'uid' di dokumen, boleh dihapus:
     // data.remove('uid');
 
     await _db.collection(tableCitizen).doc(uid).update(data);

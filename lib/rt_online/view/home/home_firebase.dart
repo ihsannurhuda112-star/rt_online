@@ -8,7 +8,7 @@ import 'package:rt_online/service/firebase_digital.dart';
 import 'package:rt_online/preferences/preference_handler.dart';
 
 class HomeFirebase extends StatefulWidget {
-  final String email; // masih dipakai kalau mau tampilkan email dsb
+  final String email;
   final VoidCallback? onNavigateToPaymentList;
 
   const HomeFirebase({
@@ -23,7 +23,7 @@ class HomeFirebase extends StatefulWidget {
 
 class _HomeFirebaseState extends State<HomeFirebase> {
   CitizenModelFirebase? citizen;
-  int totalCitizens = 0; // sekarang per user (0 atau 1)
+  int totalCitizens = 0;
   int totalCollected = 0;
   int totalPaid = 0;
   int overdue = 0;
@@ -63,16 +63,20 @@ class _HomeFirebaseState extends State<HomeFirebase> {
       final user = FirebaseAuth.instance.currentUser;
       if (user == null) return;
 
-      // ambil citizen milik user ini
-      final citizenData = await FirebaseDigital.getCitizenByUid(user.uid);
-      // ambil semua pembayaran milik user ini
+      // ambil semua pembayaran milik user ini (ownerUid)
       final payments = await FirebaseDigital.getPaymentsByOwnerUid(user.uid);
 
       if (!mounted) return;
 
       setState(() {
-        // 1 akun = 1 warga kalau profilnya ada
-        totalCitizens = citizenData == null ? 0 : 1;
+        // 🔥 hitung jumlah warga unik dari field `citizen`
+        final uniqueCitizens = payments
+            .map(
+              (p) => p.citizen.trim().toLowerCase(),
+            ) // biar "Admin" & "admin" dianggap sama
+            .toSet();
+
+        totalCitizens = uniqueCitizens.length;
 
         totalPaid = payments.where((e) => e.status == "paid").length;
         overdue = payments.where((e) => e.status == "overdue").length;
