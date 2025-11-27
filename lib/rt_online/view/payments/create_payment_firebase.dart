@@ -37,7 +37,7 @@ class _CreatePaymentFirebaseWidgetState
   Future<void> _savePayment() async {
     if (_formKey.currentState!.validate()) {
       try {
-        // 🔥 Ambil UID user yang sedang login
+        //  Ambil UID user yang sedang login
         final user = FirebaseAuth.instance.currentUser;
         if (user == null) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -48,7 +48,7 @@ class _CreatePaymentFirebaseWidgetState
           return;
         }
 
-        // 🔥 Kalau edit, pakai ownerUid yang lama. Kalau create baru, pakai user.uid
+        //  Kalau edit, pakai ownerUid yang lama. Kalau create baru, pakai user.uid
         final payment = PaymentModelFirebase(
           id: widget.payment?.id, // null = create baru, isi = edit
           ownerUid: widget.payment?.ownerUid ?? user.uid,

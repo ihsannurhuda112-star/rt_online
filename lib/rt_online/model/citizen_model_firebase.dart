@@ -1,5 +1,5 @@
 class CitizenModelFirebase {
-  final String uid; // 🔥 UID dari FirebaseAuth (WAJIB ADA)
+  final String uid;
   final String username;
   final String email;
   final int age;

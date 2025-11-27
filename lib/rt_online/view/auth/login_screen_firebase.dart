@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rt_online/navigation/buttom_navigator.dart';
+import 'package:rt_online/rt_online/view/auth/forgot_password.dart';
 import 'package:rt_online/rt_online/view/auth/register_screen_firebase.dart';
 import 'package:rt_online/service/firebase_digital.dart';
 import 'package:rt_online/widgets/login_button.dart';
@@ -99,8 +100,12 @@ class _LoginScreenFirebaseState extends State<LoginScreenFirebase> {
                     alignment: Alignment.centerRight,
                     child: TextButton(
                       onPressed: () {
-                        // Nanti bisa diisi:
-                        // FirebaseAuth.instance.sendPasswordResetEmail(email: emailController.text.trim());
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const ForgotPasswordScreen(),
+                          ),
+                        );
                       },
                       child: const Text(
                         "Lupa Kata Sandi?",
@@ -115,7 +120,7 @@ class _LoginScreenFirebaseState extends State<LoginScreenFirebase> {
 
                   height(24),
 
-                  // 🔥 LOGIN – Firebase Auth + (opsional) ambil profil dari Firestore
+                  //  LOGIN – Firebase Auth + (opsional) ambil profil dari Firestore
                   LoginButtonWidget(
                     text: "Masuk",
                     onPressed: () async {
@@ -139,15 +144,12 @@ class _LoginScreenFirebaseState extends State<LoginScreenFirebase> {
                           final email =
                               user.email ?? emailController.text.trim();
                           final uid = user.uid;
-
-                          // 2. (Opsional) Ambil profil dari Firestore kalau mau dipakai
                           // final citizen =
                           //     await FirebaseDigital.getCitizenByEmail(email);
 
                           // 3. Simpan session ke SharedPreferences
                           await PreferenceHandler.saveLogin(true);
                           await PreferenceHandler.saveEmail(email);
-                          // Kalau kamu sudah tambahin saveUid di PreferenceHandler:
                           // await PreferenceHandler.saveUid(uid);
 
                           if (!mounted) return;
@@ -237,7 +239,7 @@ class _LoginScreenFirebaseState extends State<LoginScreenFirebase> {
       width: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/newlg2.png"),
+          image: AssetImage("assets/images/keatasdikit.png"),
           fit: BoxFit.cover,
         ),
       ),

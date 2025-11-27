@@ -152,7 +152,7 @@ class _RegisterScreenFirebaseState extends State<RegisterScreenFirebase> {
 
                   height(24),
 
-                  /// 🔥 REGISTER via Firebase Auth + simpan profil ke Firestore
+                  /// REGISTER via Firebase Auth + simpan profil ke Firestore
                   LoginButtonWidget(
                     text: "Daftar",
                     onPressed: () async {

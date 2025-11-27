@@ -38,7 +38,7 @@ class _HomeFirebaseState extends State<HomeFirebase> {
     _loadProfileImage();
   }
 
-  /// 🔹 Ambil data warga dari Firestore berdasarkan UID
+  /// Ambil data warga dari Firestore berdasarkan UID
   Future<void> _loadCitizen() async {
     try {
       final user = FirebaseAuth.instance.currentUser;
@@ -57,7 +57,7 @@ class _HomeFirebaseState extends State<HomeFirebase> {
     }
   }
 
-  /// 🔹 Ambil summary pembayaran PER AKUN (pakai ownerUid)
+  ///  Ambil summary pembayaran PER AKUN (pakai ownerUid)
   Future<void> _loadSummaryData() async {
     try {
       final user = FirebaseAuth.instance.currentUser;
@@ -69,7 +69,7 @@ class _HomeFirebaseState extends State<HomeFirebase> {
       if (!mounted) return;
 
       setState(() {
-        // 🔥 hitung jumlah warga unik dari field `citizen`
+        //  hitung jumlah warga unik dari field `citizen`
         final uniqueCitizens = payments
             .map(
               (p) => p.citizen.trim().toLowerCase(),
@@ -90,7 +90,7 @@ class _HomeFirebaseState extends State<HomeFirebase> {
     }
   }
 
-  /// 🔹 Ambil path foto profil dari PreferenceHandler
+  ///  Ambil path foto profil dari PreferenceHandler
   Future<void> _loadProfileImage() async {
     final path = await PreferenceHandler.getProfilePhoto();
     if (path != null && mounted) {

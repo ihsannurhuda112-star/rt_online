@@ -26,14 +26,14 @@ class _PaymentListFirebaseWidgetState extends State<PaymentListFirebaseWidget> {
   }
 
   Future<void> _loadPayments() async {
-    // 🔥 Ambil user yang lagi login
+    //  Ambil user yang lagi login
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) {
       // optional: bisa lempar ke login kalau mau
       return;
     }
 
-    // 🔥 Ambil payment hanya milik UID ini
+    //  Ambil payment hanya milik UID ini
     final data = await FirebaseDigital.getPaymentsByOwnerUid(user.uid);
 
     setState(() {

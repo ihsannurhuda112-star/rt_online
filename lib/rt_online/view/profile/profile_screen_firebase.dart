@@ -37,7 +37,7 @@ class _ProfileScreenFirebaseState extends State<ProfileScreenFirebase> {
     _loadProfileImage();
   }
 
-  /// 🔹 Ambil data warga dari Firebase berbasis UID (FirebaseAuth)
+  ///  Ambil data warga dari Firebase berbasis UID (FirebaseAuth)
   Future<void> _loadCitizen() async {
     try {
       final user = FirebaseAuth.instance.currentUser;
@@ -69,7 +69,7 @@ class _ProfileScreenFirebaseState extends State<ProfileScreenFirebase> {
     }
   }
 
-  /// 🔹 Simpan perubahan profil ke Firebase (by UID)
+  ///  Simpan perubahan profil ke Firebase (by UID)
   Future<void> _updateCitizen() async {
     if (!_formKey.currentState!.validate()) return;
     if (citizen == null) return;
@@ -97,7 +97,7 @@ class _ProfileScreenFirebaseState extends State<ProfileScreenFirebase> {
     }
   }
 
-  /// 🔹 Logout
+  ///  Logout
   Future<void> _logout() async {
     try {
       await FirebaseAuth.instance.signOut(); // ✅ sign out Firebase
@@ -112,7 +112,7 @@ class _ProfileScreenFirebaseState extends State<ProfileScreenFirebase> {
     );
   }
 
-  /// 🔹 PILIH GAMBAR dari galeri (disimpan lokal, bukan Storage)
+  ///  PILIH GAMBAR dari galeri (disimpan lokal, bukan Storage)
   Future<void> _pickImage() async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
@@ -127,7 +127,7 @@ class _ProfileScreenFirebaseState extends State<ProfileScreenFirebase> {
     }
   }
 
-  /// 🔹 Simpan file gambar ke folder aplikasi
+  ///  Simpan file gambar ke folder aplikasi
   Future<String> _saveImageLocally(File image) async {
     final directory = await getApplicationDocumentsDirectory();
     final name = DateTime.now().millisecondsSinceEpoch.toString();
@@ -135,12 +135,12 @@ class _ProfileScreenFirebaseState extends State<ProfileScreenFirebase> {
     return savedImage.path;
   }
 
-  /// 🔹 Simpan path gambar ke SharedPreferences via PreferenceHandler
+  ///  Simpan path gambar ke SharedPreferences via PreferenceHandler
   Future<void> _saveProfileImagePath(String path) async {
     await PreferenceHandler.saveProfilePhoto(path);
   }
 
-  /// 🔹 Load gambar profil yang tersimpan
+  ///  Load gambar profil yang tersimpan
   Future<void> _loadProfileImage() async {
     final path = await PreferenceHandler.getProfilePhoto();
     if (path != null) {
@@ -262,7 +262,7 @@ class _ProfileScreenFirebaseState extends State<ProfileScreenFirebase> {
     );
   }
 
-  // 🔹 Widget text field dengan validator
+  //  Widget text field dengan validator
   Widget _buildTextField(
     String label,
     TextEditingController controller, {

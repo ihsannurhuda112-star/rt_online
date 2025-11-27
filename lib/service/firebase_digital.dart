@@ -12,7 +12,6 @@ class FirebaseDigital {
 
   ///  DIPAKAI SAAT REGISTER:
   /// Simpan profil user ke Firestore.
-  /// `uid` di CitizenModelFirebase WAJIB sama dengan FirebaseAuth.currentUser.uid
   static Future<void> createCitizen(CitizenModelFirebase citizen) async {
     final data = citizen.toMap();
 
@@ -22,7 +21,7 @@ class FirebaseDigital {
     print('Citizen created with uid: ${citizen.uid}');
   }
 
-  /// 🔍 Ambil semua warga
+  ///  Ambil semua warga
   static Future<List<CitizenModelFirebase>> getAllCitizen() async {
     final snapshot = await _db.collection(tableCitizen).get();
 
@@ -37,7 +36,7 @@ class FirebaseDigital {
     return list;
   }
 
-  /// 🔍 Ambil warga berdasarkan UID
+  ///  Ambil warga berdasarkan UID
   static Future<CitizenModelFirebase?> getCitizenByUid(String uid) async {
     final doc = await _db
         .collection(tableCitizen)
@@ -51,7 +50,7 @@ class FirebaseDigital {
     return CitizenModelFirebase.fromMap(data);
   }
 
-  /// 🔍  Ambil warga berdasarkan email
+  ///   Ambil warga berdasarkan email
   static Future<CitizenModelFirebase?> getCitizenByEmail(String email) async {
     final query = await _db
         .collection(tableCitizen)
@@ -68,7 +67,7 @@ class FirebaseDigital {
     return null;
   }
 
-  /// ✏️ Update data warga (by UID)
+  ///  Update data warga (by UID)
   static Future<void> updateCitizen(CitizenModelFirebase citizen) async {
     final uid = citizen.uid;
 
@@ -80,7 +79,7 @@ class FirebaseDigital {
     print('Citizen updated: ${data..['uid'] = uid}');
   }
 
-  /// ❌ Hapus warga (by UID)
+  ///  Hapus warga (by UID)
   static Future<void> deleteCitizen(String uid) async {
     await _db.collection(tableCitizen).doc(uid).delete();
     print('Citizen deleted: $uid');
@@ -88,7 +87,7 @@ class FirebaseDigital {
 
   // ===================== PAYMENT ===================== //
 
-  /// ➕ Tambah pembayaran
+  ///  Tambah pembayaran
   /// Pastikan PaymentModelFirebase punya field `ownerUid`
   static Future<void> addPayment(PaymentModelFirebase payment) async {
     final data = Map<String, dynamic>.from(payment.toMap());
@@ -100,7 +99,7 @@ class FirebaseDigital {
     print('Payment added: ${data..['id'] = docRef.id}');
   }
 
-  /// 🔍 Ambil semua pembayaran (biasanya dipakai admin)
+  ///  Ambil semua pembayaran (biasanya dipakai admin)
   static Future<List<PaymentModelFirebase>> getAllPayments() async {
     final snapshot = await _db.collection(tablePayment).get();
 
@@ -114,7 +113,7 @@ class FirebaseDigital {
     return list;
   }
 
-  /// 🔍 Ambil pembayaran berdasarkan pemilik (per user / akun)
+  ///  Ambil pembayaran berdasarkan pemilik (per user / akun)
   /// ownerUid = FirebaseAuth.currentUser!.uid
   static Future<List<PaymentModelFirebase>> getPaymentsByOwnerUid(
     String ownerUid,
@@ -153,7 +152,7 @@ class FirebaseDigital {
     return list;
   }
 
-  /// ✏️ Update pembayaran
+  ///  Update pembayaran
   static Future<void> updatePayment(PaymentModelFirebase payment) async {
     final id = payment.id;
 
@@ -169,7 +168,7 @@ class FirebaseDigital {
     print('Payment updated: ${data..['id'] = id}');
   }
 
-  /// ❌ Hapus pembayaran
+  ///  Hapus pembayaran
   static Future<void> deletePayment(String id) async {
     await _db.collection(tablePayment).doc(id).delete();
     print('Payment deleted: $id');
